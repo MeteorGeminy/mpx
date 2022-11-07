@@ -49,12 +49,23 @@ Mpx中提供了使用方法类似于 Vue 的动态组件能力，这是一个基
 ```html
 <!-- 组件模板 -->
 <!-- components/mySlot.mpx -->
+<template>
+  <view>
+    <view>这是组件模板</view>
+    <slot name="slot1"></slot>
+    <slot name="slot2"></slot>
+  </view>
+</template>
+<script>
+import { createComponent } from '@mpxjs/core'
 
-<view>
-  <view>这是组件模板</view>
-  <slot name="slot1"></slot>
-  <slot name="slot2"></slot>
-</view>
+createComponent({
+  options: {
+    multipleSlots: true // 启用多slot支持
+  },
+  // ...
+})
+</script>
 ```
 
 下面是引入 `mySlot` 组件的页面
@@ -75,9 +86,6 @@ Mpx中提供了使用方法类似于 Vue 的动态组件能力，这是一个基
 import { createComponent } from '@mpxjs/core'
 
 createComponent({
-  options: {
-    multipleSlots: true // 启用多slot支持
-  },
   // ...
 })
 </script>
